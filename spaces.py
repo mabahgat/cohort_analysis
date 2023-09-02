@@ -4,7 +4,7 @@ import logging
 import os
 from pathlib import Path
 from typing import List, Set, Union, Dict
-from scipy.spatial.distance import euclidean as euclidean_distance, cosine as cosine_distance
+from scipy.spatial.distance import cosine as cosine_distance
 
 from gensim.models import Word2Vec
 from nltk import word_tokenize
@@ -34,7 +34,7 @@ class WordEmbeddings:
 		text = ''
 		for file_namae in os.listdir(dir_path):
 			if file_namae.endswith('.txt'):
-				text += WordEmbeddings.__read_text(dir_path / file_namae)
+				text += WordEmbeddings.__read_text(str(dir_path / file_namae))
 		return text
 
 	@staticmethod

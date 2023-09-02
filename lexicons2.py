@@ -1,9 +1,8 @@
-from abc import abstractmethod
 from pathlib import Path
 from typing import List, Dict, Set
 from liwc import Liwc
 
-from config import global_config, Config
+from config import global_config
 from lexicons import Lexicon
 
 
