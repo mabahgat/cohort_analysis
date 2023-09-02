@@ -52,7 +52,7 @@ def load_embeddings_from_model(model_path):
     :return:
     """
     model = fasttext.load_model(model_path)
-    return model.get_words(), np.array([model.get_word_vector(word) for word in model.get_words()])
+    return model.voc(), np.array([model.get_word_vector(word) for word in model.voc()])
 
 
 def embeddings_str_to_nums(arr_string):
