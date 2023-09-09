@@ -122,6 +122,10 @@ class RankDeltaRecord:
 			'distance_delta': self.distance_delta
 		}
 
+	@staticmethod
+	def csv_headers() -> str:
+		return 'label_one,label_two,current_rank,control_rank,current_distance,control_distance,rank_delta,distance_delta'
+
 	def to_csv_str(self) -> str:
 		return f'{self.label_one},{self.label_two},{self.current_rank},{self.control_rank},' \
 			   f'{self.current_distance},{self.control_distance},{self.rank_delta},{self.distance_delta}'
@@ -233,6 +237,7 @@ class LabelEmbeddings:
 
 		if save_to_path is not None:
 			with open(save_to_path, mode='w') as out_file:
+				print(RankDeltaRecord.csv_headers(), file=out_file)
 				for deltas_for_label in deltas.values():
 					for record in sorted(deltas_for_label, key=lambda r: r.rank_delta, reverse=True):
 						print(record.to_csv_str(), file=out_file)
